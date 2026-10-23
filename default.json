@@ -1,0 +1,28 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:recommended"],
+  "assignees": ["mullzk"],
+  "labels": ["dependencies"],
+  "minimumReleaseAge": "3 days",
+  "osvVulnerabilityAlerts": true,
+  "schedule": ["before 6am on monday"],
+  "timezone": "Europe/Zurich",
+  "vulnerabilityAlerts": {
+    "labels": ["security"]
+  },
+  "packageRules": [
+    {
+      "matchUpdateTypes": ["minor", "patch"],
+      "matchDepNames": ["!ruby", "!python", "!node"],
+      "groupName": "minor and patch"
+    },
+    {
+      "matchDepNames": ["ruby", "python", "node"],
+      "labels": ["runtime"]
+    },
+    {
+      "matchManagers": ["github-actions"],
+      "groupName": "github actions"
+    }
+  ]
+}
